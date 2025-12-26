@@ -1,56 +1,77 @@
-/* Fondo semi-transparente */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 1000;
-  opacity: 0;
-  animation: fadeIn 0.3s forwards;
+/* Contenedor Principal */
+.main-content-wrapper {
+  margin-left: 250px; /* Ancho del sidebar */
+  padding-top: 60px;  /* Aumentamos esto (antes estaba en 60px) */
+  min-height: 100vh;
+  padding-right: 25px;
+  padding-left: 25px;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+}
+/* Cabecera de Tabla */
+.uppercase-header th {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #f1f5f9;
 }
 
-/* Contenedor del modal */
-.modal-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  background-color: #fff;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  width: 100%;
-  max-width: 600px;
-  padding: 2rem;
-  z-index: 1001;
-  opacity: 0;
-  animation: scaleIn 0.3s forwards;
+/* Filas */
+.patient-row:hover {
+  background-color: #f8fbff !important;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Avatar por inicial */
+.avatar-circle {
+  width: 35px;
+  height: 35px;
+  background-color: #6366f1;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
-@keyframes scaleIn {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* Indicador de estado (Punto) */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
 }
 
-@keyframes scaleOut {
-  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-}
-
-/* Botón de cerrar (opcional si quieres un X dentro del modal) */
-.modal-close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
+/* Botón Editar */
+.btn-action-edit {
   border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+  background: white;
+  color: #6366f1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.btn-action-edit:hover {
+  background: #6366f1;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Alerta Personalizada */
+.alert-custom-danger {
+  background-color: #fee2e2;
+  border: 1px solid #ef4444;
+  color: #b91c1c;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    margin-left: 0;
+  }
 }

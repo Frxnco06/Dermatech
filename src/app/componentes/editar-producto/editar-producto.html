@@ -1,0 +1,94 @@
+<div *ngIf="producto">
+  <div class="modal-backdrop" (click)="cerrar()"></div>
+
+  <div class="modal-container animate-scale">
+    <div class="modal-content shadow-lg border-0">
+
+      <div class="modal-header bg-light border-bottom-0 pb-0">
+        <h5 class="modal-title fw-bold text-dark">
+          <i class="fas me-2"
+            [ngClass]="producto.idProducto ? 'fa-box-open text-primary' : 'fa-plus-circle text-success'"></i>
+          {{ producto.idProducto ? 'Editar Producto' : 'Nuevo Producto' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="cerrar()"></button>
+      </div>
+
+      <div class="modal-body py-4">
+        <form>
+<div class="mb-3">
+  <label class="form-label small fw-bold text-muted text-uppercase">Nombre del Producto</label>
+  <input type="text" class="form-control" 
+         [class.is-invalid]="nombreDuplicado && producto.nombreProducto.trim().length > 0"
+         [(ngModel)]="producto.nombreProducto" name="nombre">
+  
+  <div *ngIf="nombreDuplicado && producto.nombreProducto.trim().length > 0" class="text-danger small mt-1">
+    <i class="fas fa-exclamation-circle"></i> Este nombre ya está registrado.
+  </div>
+</div>          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted text-uppercase">Descripción</label>
+            <textarea class="form-control" rows="2" [(ngModel)]="producto.descripcion" name="descripcion"
+              placeholder="Detalles del producto..."></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label small fw-bold text-muted text-uppercase">Precio (S/)</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0">S/</span>
+                <input type="number" class="form-control border-start-0 ps-0" [(ngModel)]="producto.precio"
+                  name="precio">
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label small fw-bold text-muted text-uppercase">Stock</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i
+                    class="fas fa-layer-group text-muted"></i></span>
+                <input type="number" class="form-control border-start-0 ps-0" [(ngModel)]="producto.stock" name="stock">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+<div class="col-md-5 mb-3">
+  <label class="form-label small fw-bold text-muted text-uppercase">SKU / Código</label>
+  <input type="text" class="form-control" 
+         [class.is-invalid]="skuDuplicado && producto.sku.trim().length > 0" 
+         [(ngModel)]="producto.sku" name="sku">
+  
+  <div *ngIf="skuDuplicado && producto.sku.trim().length > 0" class="text-danger small mt-1">
+    <i class="fas fa-exclamation-circle"></i> El SKU ya existe.
+  </div>
+</div>            <div class="col-md-7 mb-3">
+              <label class="form-label small fw-bold text-muted text-uppercase">Imagen URL</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="fas fa-image text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" [(ngModel)]="producto.imagenUrl"
+                  name="imagenUrl" placeholder="https://...">
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label small fw-bold text-muted text-uppercase">Disponibilidad</label>
+            <select class="form-select" [(ngModel)]="producto.activo" name="activo">
+              <option [ngValue]="true">🟢 Activo para la venta</option>
+              <option [ngValue]="false">🔴 Inactivo / Deshabilitado</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer border-top-0 pt-0">
+        <button class="btn btn-light px-4 fw-bold text-muted" (click)="cerrar()">Descartar</button>
+
+        <button class="btn px-4 fw-bold shadow-sm" [ngClass]="producto.idProducto ? 'btn-primary' : 'btn-success'"
+          [disabled]="nombreDuplicado || skuDuplicado || !producto.nombreProducto?.trim() || !producto.sku?.trim()"
+          (click)="guardarCambios()">
+          <i class="fas me-2" [ngClass]="producto.idProducto ? 'fa-save' : 'fa-check'"></i>
+          {{ producto.idProducto ? 'Actualizar Producto' : 'Crear Producto' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

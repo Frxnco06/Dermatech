@@ -32,10 +32,8 @@ export class DetalleCitaComponent implements OnInit {
 
   cargarYFiltrarCita(idCita: number, email: string): void {
     this.loading = true;
-    // Usamos tu endpoint: /api/citas/paciente/email/{email}
     this.http.get<any[]>(`http://localhost:8080/api/citas/paciente/email/${email}`).subscribe({
       next: (data) => {
-        // Buscamos la cita específica por ID dentro del listado del paciente
         const encontrada = data.find(c => c.idCita === idCita);
         
         if (encontrada) {
@@ -47,7 +45,7 @@ export class DetalleCitaComponent implements OnInit {
           };
         }
         this.loading = false;
-        this.cdr.detectChanges(); // Forzamos el renderizado de los datos encontrados
+        this.cdr.detectChanges(); 
       },
       error: (err) => {
         console.error('Error al recuperar datos:', err);

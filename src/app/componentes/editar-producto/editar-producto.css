@@ -1,0 +1,75 @@
+/* Posicionamiento para que no lo tape el Header */
+.modal-container {
+  position: fixed; 
+  top: 120px; /* Suficiente espacio para que baje del header */
+  left: 50%;
+  z-index: 2001;
+  width: 95%;
+  max-width: 500px;
+}
+
+.modal-backdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6); /* Color azul oscuro traslúcido */
+  backdrop-filter: blur(4px); /* Efecto de desenfoque moderno */
+  z-index: 2000;
+  animation: fadeIn 0.3s forwards;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+/* Estilos de Formulario */
+.form-label {
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-control, .form-select {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.input-group-text {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  color: #94a3b8;
+}
+
+/* Botones */
+.btn {
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Animación */
+@keyframes scaleIn {
+  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+.animate-scale {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}

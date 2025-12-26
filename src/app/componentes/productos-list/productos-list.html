@@ -1,0 +1,108 @@
+<div class="main-content-wrapper">
+  <div class="container-fluid mt-5 pt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="fw-bold text-dark mb-1">Gestión de Inventario</h2>
+        <p class="text-muted small">Control de existencias, precios y estados de productos.</p>
+      </div>
+
+      <button class="btn btn-success rounded-pill px-4 shadow-sm" (click)="nuevoProducto()">
+        <i class="fas fa-plus-circle me-2"></i>Nuevo Producto
+      </button>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger border-0 shadow-sm rounded-3">
+      <i class="fas fa-exclamation-triangle me-2"></i> {{ error }}
+    </div>
+
+    <div *ngIf="cargando" class="text-center py-5">
+      <div class="spinner-grow text-success" role="status"></div>
+      <p class="text-muted mt-2">Sincronizando almacén...</p>
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4 overflow-hidden" *ngIf="!cargando && productos.length">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light text-muted uppercase-header">
+              <tr>
+                <th class="ps-4">ID</th>
+                <th>Producto</th>
+                <th>Categoría / SKU</th>
+                <th>Precio</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center pe-4">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of productos; trackBy: trackById" class="product-row">
+                <td class="ps-4">
+                  <span class="text-muted small fw-bold">#{{ p.idProducto }}</span>
+                </td>
+
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="product-img-container me-3">
+                      <img [src]="p.imagenUrl || 'assets/no-image.png'" class="rounded-3 shadow-sm"
+                        onerror="this.src='https://placehold.co/40x40?text=P'">
+                    </div>
+                    <div>
+                      <div class="fw-bold text-dark">{{ p.nombreProducto }}</div>
+                      <small class="text-muted">{{ p.sku }}</small>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <span class="badge bg-soft-info text-info rounded-pill px-2">
+                    {{ p.nombreCategoria || 'Sin categoría' }}
+                  </span>
+                </td>
+
+                <td>
+                  <div class="fw-bold text-dark">S/ {{ p.precio | number:'1.2-2' }}</div>
+                </td>
+
+                <td class="text-center">
+                  <div [ngClass]="p.stock < 10 ? 'text-danger fw-bold' : 'text-dark'">
+                    {{ p.stock }}
+                    <div *ngIf="p.stock < 10" class="text-uppercase" style="font-size: 0.6rem;">¡Bajo!</div>
+                  </div>
+                </td>
+
+                <td class="text-center">
+                  <span class="badge-dot" [ngClass]="p.activo ? 'bg-success' : 'bg-danger'"></span>
+                  <span class="small fw-medium" [ngClass]="p.activo ? 'text-success' : 'text-danger'">
+                    {{ p.activo ? 'Activo' : 'Inactivo' }}
+                  </span>
+                </td>
+
+                <td class="text-center pe-4">
+                  <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-icon btn-edit" (click)="editar(p)" title="Editar">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button class="btn btn-icon btn-delete" (click)="eliminarProducto(p)" title="Eliminar">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!cargando && !productos.length" class="text-center py-5 bg-white rounded-4 shadow-sm">
+      <i class="fas fa-box-open fa-3x text-light mb-3"></i>
+      <h5 class="text-muted">No hay productos en el inventario</h5>
+    </div>
+
+    <app-editar-producto *ngIf="productoSeleccionado" [producto]="productoSeleccionado"
+      [productosExistentes]="productos" (guardar)="guardarProducto($event)" (cancelar)="cancelarEdicion()">
+    </app-editar-producto>
+  </div>
+</div>

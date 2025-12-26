@@ -1,0 +1,62 @@
+/* Espaciado General */
+.main-content-wrapper {
+  margin-left: 250px;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding-top: 50px; /* Suficiente para bajar del header */
+  padding-bottom: 3rem;
+  transition: 0.3s ease;
+}
+
+/* Cabecera Tabla */
+.uppercase-header th {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.2rem 0.5rem;
+  background-color: #f1f5f9;
+}
+
+/* Imagen de Producto */
+.product-img-container img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  background-color: #eee;
+}
+
+/* Badges Soft */
+.bg-soft-info {
+  background-color: rgba(13, 202, 240, 0.1);
+}
+
+/* Punto de estado */
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Botones de Icono */
+.btn-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-edit { background-color: #eff6ff; color: #3b82f6; }
+.btn-edit:hover { background-color: #3b82f6; color: white; }
+
+.btn-delete { background-color: #fef2f2; color: #ef4444; }
+.btn-delete:hover { background-color: #ef4444; color: white; }
+
+@media (max-width: 768px) {
+  .main-content-wrapper { margin-left: 0; }
+}

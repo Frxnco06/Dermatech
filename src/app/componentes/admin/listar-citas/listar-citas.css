@@ -1,0 +1,22 @@
+/* Este contenedor empuja todo el contenido a la derecha del sidebar */
+.main-content-wrapper {
+  margin-left: 250px; /* Exactamente el ancho de tu sidebar */
+  width: calc(100% - 250px); /* El ancho restante de la pantalla */
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa; /* Color de fondo suave para que resalte la tabla */
+  transition: all 0.3s;
+}
+
+/* Ajuste para dispositivos móviles (opcional) */
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Estilo adicional para que la tabla no se vea pegada arriba */
+.container {
+  padding-top: 2rem !important;
+}

@@ -1,11 +1,29 @@
-<div class="d-flex">
-
-  <!-- SIDEBAR -->
+<div class="d-flex" style="min-height: 100vh;">
   <app-sidebar></app-sidebar>
 
-  <!-- CONTENIDO -->
-  <div id="page-content-wrapper" class="p-4 w-100">
-    <router-outlet></router-outlet>
-  </div>
+  <div class="flex-grow-1 d-flex flex-column bg-light">
+    
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow" style="height: 114px;">
+      <div class="container-fluid">
+        
+        <div class="ms-auto d-flex align-items-center">
+          <div class="text-white text-end me-3">
+            <small class="d-block opacity-75" style="font-size: 0.7rem; line-height: 1;">Administrador</small>
+            <span class="fw-semibold text-light" style="font-size: 0.9rem;">{{ auth.getUsuario() }}</span>
+          </div>
+          
+          <button class="btn btn-danger btn-sm px-3 py-1 shadow-sm d-flex align-items-center" 
+                  style="font-size: 0.8rem;" 
+                  (click)="cerrarSesion()">
+            <i class="fas fa-sign-out-alt me-2"></i> Salir
+          </button>
+        </div>
+      </div>
+    </header>
 
+    <main class="p-4 overflow-auto flex-grow-1">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
 </div>

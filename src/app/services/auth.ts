@@ -42,25 +42,23 @@ export class AuthService {
   /**
    * Realiza el login del usuario
    */
-  login(email: string, contrasenia: string): Observable<LoginResponse> {
-    const loginData: LoginRequest = { email, contrasenia };
-    
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, loginData)
-      .pipe(
-        tap(response => {
-          // Guardar el token y datos del usuario en localStorage
-          localStorage.setItem(this.tokenKey, response.token);
-          localStorage.setItem(this.userKey, response.usuario);
-          localStorage.setItem(this.rolKey, response.rol);
-          this.isAuthenticatedSubject.next(true);
+// En auth.service.ts
+login(email: string, contrasenia: string): Observable<LoginResponse> {
+  const loginData: LoginRequest = { email, contrasenia };
+  
+  return this.http.post<LoginResponse>(`${this.apiUrl}/login`, loginData)
+    .pipe(
+      tap(response => {
+        localStorage.setItem(this.tokenKey, response.token);
+        localStorage.setItem(this.userKey, response.usuario);
+        localStorage.setItem(this.rolKey, response.rol);
 
-          // --- NOTIFICAR EL CAMBIO DE USUARIO ---
-          this.userEmailSubject.next(response.usuario); 
-          // --------------------------------------
-        })
-      );
-  }
-
+        // ESTO ES LO QUE DISPARA EL CAMBIO EN EL HEADER AL INSTANTE
+        this.isAuthenticatedSubject.next(true); 
+        this.userEmailSubject.next(response.usuario); 
+      })
+    );
+}
   /**
    * Cierra la sesión del usuario
    */
