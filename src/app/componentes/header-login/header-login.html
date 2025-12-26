@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <img src="/logo.png" alt="Dermatech Logo" width="80" class="me-2">
+  <a class="navbar-brand fw-bold" routerLink="/">DermaTech</a>
+
+  <div class="ms-auto d-flex align-items-center">
+    <!-- Mostrar solo si hay usuario -->
+    <span *ngIf="auth.getUsuario()" class="me-3">
+      Bienvenido, {{ auth.getUsuario() }}
+    </span>
+
+    <button *ngIf="auth.isLoggedIn()" class="btn btn-outline-danger btn-sm" (click)="cerrarSesion()">
+      Cerrar Sesión
+    </button>
+  </div>
+</nav>

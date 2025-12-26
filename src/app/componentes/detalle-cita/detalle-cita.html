@@ -1,0 +1,90 @@
+<div class="main-wrapper">
+  <div class="container py-5" style="margin-top: 100px;">
+    
+    <div *ngIf="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="text-muted mt-2">Obteniendo detalles de la cita...</p>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mx-auto" style="max-width: 900px;" *ngIf="!loading && cita">
+      
+      <div class="bg-primary-custom text-white text-center py-3">
+        <h3 class="mb-0 fw-bold"><i class="fas fa-file-alt me-2"></i>Detalle de la Cita</h3>
+      </div>
+
+      <div class="card-body p-4 p-md-5 bg-white">
+        
+        <div class="info-section mb-5">
+          <h5 class="text-center text-muted border-bottom pb-2 mb-4">
+            <i class="fas fa-user-md me-2"></i>Información del Médico
+          </h5>
+          <div class="row text-center">
+            <div class="col-md-6 mb-3">
+              <p class="mb-0 fw-bold text-dark">Médico:</p>
+              <span class="text-muted">Dr. {{ cita.medicoNombre }}</span>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-0 fw-bold text-dark">Especialidad:</p>
+              <span class="text-muted">{{ cita.especialidad }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section mb-5">
+          <h5 class="text-center text-muted border-bottom pb-2 mb-4">
+            <i class="fas fa-calendar-check me-2"></i>Información de la Cita
+          </h5>
+          <div class="row text-center align-items-center">
+            <div class="col-md-4 mb-3">
+              <p class="mb-0 fw-bold text-dark">Fecha:</p>
+              <span class="text-muted"><i class="far fa-calendar-alt me-1"></i> {{ cita.fechaHora | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="col-md-4 mb-3">
+              <p class="mb-0 fw-bold text-dark">Hora:</p>
+              <span class="text-muted"><i class="far fa-clock me-1"></i> {{ cita.fechaHora | date:'HH:mm' }}</span>
+            </div>
+            <div class="col-md-4 mb-3">
+              <p class="mb-0 fw-bold text-dark">Estado:</p>
+              <span class="badge px-3 py-2 rounded-pill shadow-sm" [ngClass]="getBadgeClass(cita.estado)">
+                {{ cita.estado }}
+              </span>
+            </div>
+            <div class="col-12 mt-3">
+              <p class="mb-0 fw-bold text-dark">Costo de la Consulta:</p>
+              <span class="text-success-custom fs-4 fw-bold">S/ {{ cita.precio | number:'1.2-2' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h5 class="text-center text-muted border-bottom pb-2 mb-4">
+            <i class="fas fa-stethoscope me-2"></i>Información Clínica
+          </h5>
+          
+          <div class="card bg-light border-0 mb-3 text-center rounded-3 shadow-none">
+            <div class="card-body">
+              <p class="fw-bold mb-1"><i class="fas fa-comment-medical me-2"></i>Motivo de Consulta:</p>
+              <p class="text-muted mb-0">{{ cita.motivoConsulta }}</p>
+            </div>
+          </div>
+
+          <div class="card bg-warning-custom border-0 text-center rounded-3 shadow-none">
+            <div class="card-body">
+              <p class="fw-bold mb-1"><i class="fas fa-clipboard-list me-2"></i>Observaciones:</p>
+              <p class="text-muted mb-0 italic">{{ cita.observaciones || 'Sin observaciones registradas' }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5 pt-3 border-top">
+          <p class="small text-muted mb-4"><i class="fas fa-clock me-1"></i> Cita registrada: {{ cita.fechaHora | date:'dd/MM/yyyy HH:mm' }}</p>
+          <button class="btn btn-outline-dark rounded-pill px-5 py-2 shadow-sm transition-hover" routerLink="/mis-citas">
+            <i class="fas fa-arrow-left me-2"></i>Volver a Mis Citas
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

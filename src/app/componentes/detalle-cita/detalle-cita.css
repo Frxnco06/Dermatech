@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  flex: 1;
+}
+
+.bg-primary-custom {
+  background-color: #4a7cfe !important; /* Azul del header de la imagen */
+}
+
+.bg-info-light {
+  background-color: #4dd0e1 !important; /* Celeste PENDIENTE */
+}
+
+.bg-warning-custom {
+  background-color: #fff9db !important; /* Amarillo pálido de la imagen */
+  border: 1px solid #ffe066 !important;
+}
+
+.text-success-custom {
+  color: #28a745 !important;
+}
+
+.transition-hover:hover {
+  background-color: #343a40;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.italic {
+  font-style: italic;
+}

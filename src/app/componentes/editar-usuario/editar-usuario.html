@@ -1,0 +1,54 @@
+<!-- Fondo modal -->
+<div class="modal-backdrop" *ngIf="usuario" (click)="cerrar()"></div>
+
+<!-- Modal -->
+<div class="modal-container" *ngIf="usuario">
+  <div class="modal-content animate-scale">
+    <div class="modal-header">
+      <h5 class="modal-title">Editar Paciente</h5>
+      <button type="button" class="btn-close" (click)="cerrar()"></button>
+    </div>
+
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Nombre Completo</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.nombreCompleto" name="nombre">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Correo</label>
+          <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Teléfono</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.telefono" name="telefono">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">DNI</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.dni" name="dni">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Dirección</label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.direccion" name="direccion">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Activo</label>
+          <select class="form-select" [(ngModel)]="usuario.activo" name="activo">
+            <option [ngValue]="true">Activo</option>
+            <option [ngValue]="false">Inactivo</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="cerrar()">Cancelar</button>
+      <button class="btn btn-primary" (click)="guardarCambios()">Guardar</button>
+    </div>
+  </div>
+</div>

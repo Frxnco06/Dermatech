@@ -1,0 +1,43 @@
+/* Sidebar */
+#page-content-wrapper {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-footer a {
+  transition: all 0.2s ease;
+}
+
+.card-footer a:hover {
+  transform: translateX(5px);
+  display: inline-block;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+}

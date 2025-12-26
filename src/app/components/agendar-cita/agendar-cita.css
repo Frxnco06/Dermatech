@@ -1,0 +1,79 @@
+.appointment-page {
+  background-color: #f8faf9;
+  min-height: 100vh;
+  padding-top: 110px; /* Suficiente espacio para que no choque con el navbar */
+  padding-bottom: 40px;
+}
+
+.title-green {
+  color: #3d8b7a;
+  margin-bottom: 5px;
+}
+
+.appointment-card {
+  max-width: 850px;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #eee;
+}
+
+.card-header-banner {
+  background-color: #4da1a9;
+  border-radius: 15px 15px 0 0;
+}
+
+.divider-green {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.divider-green::before, .divider-green::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #8fc0a9;
+}
+
+.divider-green span {
+  padding: 0 15px;
+  color: #3d8b7a;
+  font-weight: 600;
+}
+
+.custom-input {
+  border: 1.5px solid #aed9da;
+  border-radius: 10px;
+}
+
+.alert-custom-info {
+  background-color: #e6f4f1;
+  border: 1px solid #c9e4de;
+  color: #2c5d5d;
+  border-radius: 10px;
+}
+
+.btn-green-submit {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  font-weight: 600;
+}
+
+.btn-green-submit:hover:not(:disabled) {
+  background-color: #a5d6a7;
+}
+
+.x-small {
+  font-size: 0.8rem;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Obliga al componente a medir toda la pantalla */
+}
+
+app-footer {
+  margin-top: auto; /* Esto empuja el footer al final exacto */
+  width: 100%;
+}

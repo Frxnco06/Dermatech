@@ -1,0 +1,83 @@
+/* ===== CONTENEDOR GENERAL ===== */
+.container-fluid {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== IMAGEN DE FONDO IZQUIERDA ===== */
+.login-bg-image {
+  height: 100vh;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url('/assets/img/login-bg.jpg'); /* CAMBIA LA RUTA SI ES NECESARIO */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay de texto */
+.login-overlay {
+  max-width: 500px;
+}
+
+.login-overlay h1 {
+  letter-spacing: 2px;
+}
+
+.login-overlay p {
+  font-size: 1.1rem;
+}
+
+/* ===== PANEL DERECHO ===== */
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+/* ===== TARJETA LOGIN ===== */
+.login-card {
+  border-radius: 16px;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== INPUTS ===== */
+.form-control {
+  border-radius: 12px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.15rem rgba(25, 135, 84, 0.25);
+  border-color: #198754;
+}
+
+/* ===== BOTÓN LOGIN ===== */
+.btn-success {
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+}
+
+/* ===== BOTONES SECUNDARIOS ===== */
+.btn-outline-secondary {
+  border-radius: 12px;
+}
+
+/* ===== TEXTO ERROR ===== */
+.text-danger {
+  font-size: 0.95rem;
+}
+
+/* ===== ANIMACIÓN ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

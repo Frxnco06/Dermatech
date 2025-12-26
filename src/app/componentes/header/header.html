@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-teal navbar-dark py-3 shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
+      <img src="/logo.png" alt="Dermatech Logo" width="80" class="me-2">
+      DERMATECH
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/productos">Productos</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/agendar-cita">Agendar Cita</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/nosotros">Nosotros</a></li>
+      </ul>
+
+      <div *ngIf="nombreAMostrar" class="dropdown ms-auto">
+        <button class="btn btn-teal-light dropdown-toggle text-white fw-bold d-flex align-items-center border-0 shadow-none" 
+                type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user-circle fa-lg me-2"></i>
+          {{ nombreAMostrar }}
+        </button>
+        
+        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="userMenu">
+          <li>
+            <a class="dropdown-item py-2" routerLink="/perfil">
+              <i class="fas fa-user me-2 text-muted"></i> Mi perfil
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item py-2" routerLink="/mis-citas">
+              <i class="fas fa-calendar-check me-2 text-muted"></i> Mis citas
+            </a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <button (click)="logout()" class="dropdown-item py-2 text-danger fw-bold">
+              <i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

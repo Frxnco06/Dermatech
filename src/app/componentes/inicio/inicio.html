@@ -1,0 +1,62 @@
+<div class="container-fluid p-0">
+
+  <!-- BANNER -->
+  <section class="hero position-relative">
+    <img src="tratamiento.jpg" alt="Tratamiento dermatológico" class="img-fluid w-100" style="height: 1000px; object-fit: cover;">
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.4);"></div>
+    <div class="hero-content position-absolute top-50 start-50 translate-middle text-center text-white">
+      <h1 class="display-4 fw-bold">Cuidado profesional para tu piel</h1>
+      <p class="fs-5">Productos clínicamente probados y atención especializada para tu bienestar dermatológico.</p>
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <a routerLink="/productos" class="btn btn-success btn-lg px-4">Ver Productos</a>
+        <a routerLink="/registrar-usuario" class="btn btn-outline-light btn-lg px-4">Agendar Cita</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DESTACADOS -->
+  <section class="destacados py-5 bg-light text-center">
+    <h2 class="fw-bold mb-4 text-success">Productos Destacados</h2>
+    <p class="text-muted mb-5">Explora nuestras soluciones dermatológicas más recomendadas.</p>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-3" *ngFor="let producto of [1,2,3,4]">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="productos/p1.jpg" class="card-img-top rounded-3" alt="Producto {{producto}}">
+          <div class="card-body">
+            <h6 class="card-title fw-semibold">
+              {{ producto === 1 ? 'Serum Hidratante' : producto === 2 ? 'Protector Solar Facial' : producto === 3 ? 'Gel Limpiador Suave' : 'Crema Antiacné' }}
+            </h6>
+            <p class="text-success fw-bold mb-2">
+              {{ producto === 1 ? 'S/ 89.90' : producto === 2 ? 'S/ 59.90' : producto === 3 ? 'S/ 49.90' : 'S/ 74.90' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <a routerLink="/productos" class="btn btn-success btn-lg px-4">Ver todos los productos</a>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros py-5">
+    <div class="container d-flex flex-column flex-lg-row align-items-center gap-4">
+      <div class="flex-fill">
+        <h2 class="fw-bold mb-3">Sobre DermaTech</h2>
+        <p class="text-muted mb-4">
+          En DermaTech combinamos ciencia y tecnología para cuidar la salud de tu piel.
+          Nuestros productos están formulados con ingredientes clínicamente comprobados y recomendados por dermatólogos certificados.
+        </p>
+        <a routerLink="/nosotros" class="btn btn-outline-success">Conoce más</a>
+      </div>
+      <div class="flex-fill text-center">
+        <img src="dermatologa.jpg" alt="Dermatóloga" class="img-fluid rounded-3 shadow" style="max-width: 400px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <app-footer></app-footer> <!-- Footer standalone o HTML directo -->
+</div>

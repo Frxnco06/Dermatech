@@ -1,0 +1,136 @@
+/* ============================================
+   SIDEBAR DERMATECH - ESTILOS
+   ============================================ */
+   #page-content-wrapper {
+       margin-left: 250px;
+       width: calc(100% - 250px);
+       transition: all 0.3s ease;
+   }
+
+   #wrapper.toggled #sidebar-wrapper {
+       margin-left: -250px;
+   }
+
+   #wrapper.toggled #page-content-wrapper {
+       margin-left: 0;
+       width: 100%;
+   }
+
+.sidebar-professional {
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #4fd1c5 0%, #2c7a95 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(79, 209, 197, 0.3);
+    margin: 0 auto;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: #ffffff;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.text-primary-custom {
+    color: #1a5f7a;
+}
+
+/* Items del menú */
+.sidebar-item {
+    background: transparent !important;
+    color: #495057 !important;
+    transition: all 0.3s ease;
+    padding: 0.85rem 1rem;
+    font-weight: 500;
+}
+
+.sidebar-item:hover {
+    background: #f8f9fa !important;
+    color: #1a5f7a !important;
+    transform: translateX(5px);
+    padding-left: 1.5rem;
+    border-left: 3px solid #4fd1c5;
+}
+
+.sidebar-item.active {
+    background: linear-gradient(90deg, rgba(79, 209, 197, 0.15) 0%, rgba(79, 209, 197, 0.05) 100%) !important;
+    color: #1a5f7a !important;
+    border-left: 4px solid #4fd1c5;
+    font-weight: 600;
+}
+
+/* Subitems */
+.sidebar-subitem {
+    background: transparent !important;
+    color: #6c757d !important;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.sidebar-subitem:hover {
+    background: #f8f9fa !important;
+    color: #495057 !important;
+    padding-left: 3.5rem !important;
+}
+
+.sidebar-subitem.active {
+    background: rgba(79, 209, 197, 0.1) !important;
+    color: #1a5f7a !important;
+    font-weight: 600;
+    border-left: 3px solid #4fd1c5;
+}
+
+.sidebar-divider {
+    border-color: #e0e0e0;
+    margin: 0.5rem 1rem;
+}
+
+.sidebar-heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+.sidebar-footer {
+    background: #f8f9fa;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb {
+    background: #4fd1c5;
+    border-radius: 3px;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #2c7a95;
+}
+
+.sidebar-item .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-item[aria-expanded="true"] .fa-chevron-down {
+    transform: rotate(180deg);
+}

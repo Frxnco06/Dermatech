@@ -1,0 +1,238 @@
+<!-- src/app/components/register/register.component.html -->
+<div class="container-fluid px-0">
+  <div class="row g-0">
+    <!-- Panel izquierdo con imagen -->
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="register-bg-image">
+        <div class="register-overlay">
+          <h1 class="display-4 fw-bold">DERMATECH</h1>
+          <p class="lead">El cuidado y la tecnología se unen por el bienestar de tu piel.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel derecho con formulario -->
+    <div class="col-lg-6 form-container">
+      <div class="register-card bg-white shadow rounded">
+        <div class="text-center mb-4">
+          <h2 class="h3 fw-bold">Crear Cuenta</h2>
+          <p class="text-muted">Regístrate para comenzar a usar Dermatech.</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+          <!-- Nombre completo -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="text" 
+                [(ngModel)]="usuario.nombreCompleto"
+                name="nombreCompleto"
+                class="form-control" 
+                id="nombreCompleto"
+                placeholder="Nombre completo"
+                (input)="clearError('nombreCompleto')"
+                required
+              />
+              <label for="nombreCompleto">
+                <i class="fas fa-user me-2"></i>Nombre completo
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['nombreCompleto']">
+              {{ errors['nombreCompleto'] }}
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="email" 
+                [(ngModel)]="usuario.email"
+                name="email"
+                class="form-control" 
+                id="email"
+                placeholder="Correo electrónico"
+                (input)="clearError('email')"
+                required
+              />
+              <label for="email">
+                <i class="fas fa-envelope me-2"></i>Correo electrónico
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['email']">
+              {{ errors['email'] }}
+            </div>
+          </div>
+
+          <!-- DNI -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="text" 
+                [(ngModel)]="usuario.dni"
+                name="dni"
+                class="form-control" 
+                id="dni" 
+                placeholder="DNI"
+                maxlength="8"
+                (input)="clearError('dni')"
+                required
+              />
+              <label for="dni">
+                <i class="fas fa-id-card me-2"></i>DNI
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['dni']">
+              {{ errors['dni'] }}
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="text" 
+                [(ngModel)]="usuario.telefono"
+                name="telefono"
+                class="form-control" 
+                id="telefono"
+                placeholder="Teléfono"
+                (input)="clearError('telefono')"
+                required
+              />
+              <label for="telefono">
+                <i class="fas fa-phone me-2"></i>Teléfono
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['telefono']">
+              {{ errors['telefono'] }}
+            </div>
+          </div>
+
+          <!-- Dirección -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="text" 
+                [(ngModel)]="usuario.direccion"
+                name="direccion"
+                class="form-control" 
+                id="direccion"
+                placeholder="Dirección"
+                (input)="clearError('direccion')"
+                required
+              />
+              <label for="direccion">
+                <i class="fas fa-map-marker-alt me-2"></i>Dirección
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['direccion']">
+              {{ errors['direccion'] }}
+            </div>
+          </div>
+
+          <!-- Fecha de Nacimiento -->
+          <div class="mb-3">
+            <div class="form-floating">
+              <input 
+                type="date" 
+                [(ngModel)]="usuario.fechaNacimiento"
+                name="fechaNacimiento"
+                class="form-control" 
+                id="fechaNacimiento"
+                placeholder="Fecha de nacimiento"
+                (input)="clearError('fechaNacimiento')"
+                required
+              />
+              <label for="fechaNacimiento">
+                <i class="fas fa-calendar me-2"></i>Fecha de nacimiento
+              </label>
+            </div>
+            <div class="invalid-feedback" *ngIf="errors['fechaNacimiento']">
+              {{ errors['fechaNacimiento'] }}
+            </div>
+          </div>
+
+          <!-- Contraseñas -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="form-floating">
+                <input 
+                  type="password" 
+                  [(ngModel)]="usuario.contrasenia"
+                  name="contrasenia"
+                  class="form-control"
+                  id="contrasenia" 
+                  placeholder="Contraseña"
+                  (input)="clearError('contrasenia')"
+                  required
+                />
+                <label for="contrasenia">
+                  <i class="fas fa-lock me-2"></i>Contraseña
+                </label>
+              </div>
+              <div class="invalid-feedback" *ngIf="errors['contrasenia']">
+                {{ errors['contrasenia'] }}
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <div class="form-floating">
+                <input 
+                  type="password" 
+                  [(ngModel)]="confirmarContrasenia"
+                  name="confirmarContrasenia"
+                  class="form-control"
+                  id="confirmarContrasenia" 
+                  placeholder="Confirmar contraseña"
+                  (input)="clearError('confirmarContrasenia')"
+                  required
+                />
+                <label for="confirmarContrasenia">
+                  <i class="fas fa-lock me-2"></i>Confirmar contraseña
+                </label>
+              </div>
+              <div class="invalid-feedback" *ngIf="errors['confirmarContrasenia']">
+                {{ errors['confirmarContrasenia'] }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de registro -->
+          <div class="d-grid mb-3">
+            <button 
+              type="submit" 
+              class="btn btn-success btn-lg"
+              [disabled]="isLoading"
+            >
+              <span *ngIf="!isLoading">Registrarse</span>
+              <span *ngIf="isLoading">
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                Registrando...
+              </span>
+            </button>
+          </div>
+
+          <!-- Enlaces adicionales -->
+          <div class="text-center">
+            <hr>
+            <a 
+              class="btn btn-outline-secondary w-100 mb-3" 
+              routerLink="/login"
+            >
+              ¿Ya tienes una cuenta? Inicia sesión
+            </a>
+            <a 
+              class="btn btn-outline-secondary w-100" 
+              routerLink="/"
+            >
+              Volver
+            </a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

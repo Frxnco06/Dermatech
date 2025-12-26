@@ -1,0 +1,78 @@
+<div class="container-fluid px-0">
+  <div class="row g-0 min-vh-100">
+    <!-- Imagen de fondo -->
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="login-bg-image d-flex align-items-center justify-content-center text-white text-center p-5">
+        <div class="login-overlay">
+          <h1 class="display-4 fw-bold">DERMATECH</h1>
+          <p class="lead">El cuidado y la tecnología se unen por el bienestar de tu piel.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario de login -->
+    <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
+      <div class="login-card bg-white shadow rounded p-4 w-100" style="max-width: 450px;">
+        <div class="text-center mb-4">
+          <h2 class="h3 fw-bold">Iniciar Sesión</h2>
+          <p class="text-muted">Accede a tu cuenta para continuar.</p>
+        </div>
+
+        <form (ngSubmit)="onLogin()">
+          <!-- Email -->
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="tu@correo.com"
+              [(ngModel)]="email"
+              name="email"
+              required
+            />
+            <label for="email"><i class="fas fa-envelope me-2"></i>Correo Electrónico</label>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="contrasenia"
+              placeholder="Contraseña"
+              [(ngModel)]="contrasenia"
+              name="contrasenia"
+              required
+            />
+            <label for="contrasenia"><i class="fas fa-lock me-2"></i>Contraseña</label>
+          </div>
+
+          <!-- Recordarme y olvidaste contraseña -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="recordarme" />
+              <label class="form-check-label small" for="recordarme">Recordarme</label>
+            </div>
+            <a class="small text-decoration-none" href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <!-- Botón Ingresar -->
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-success btn-lg">Ingresar</button>
+          </div>
+
+          <!-- Opciones Crear cuenta o volver -->
+          <div class="text-center">
+            <hr />
+            <p class="text-muted small mb-2">¿No tienes una cuenta?</p>
+            <a class="btn btn-outline-secondary w-100 mb-2" routerLink="/registrar-usuario">Crear una Cuenta Nueva</a>
+            <a class="btn btn-outline-secondary w-100" routerLink="/">Volver</a>
+          </div>
+        </form>
+
+        <!-- Mensaje de error de login -->
+        <p *ngIf="errorMessage" class="text-danger text-center mt-3">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
